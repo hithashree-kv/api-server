@@ -28,7 +28,7 @@ next_id = 3
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({
-        "application": "DevOps Assignment API",
+        "application": "API Server",
         "version": "1.0.0",
         "status": "Running"
     }), 200
