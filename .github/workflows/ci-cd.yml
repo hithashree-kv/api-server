@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: [self-hosted, windows, x64]
+    runs-on: self-hosted
 
     steps:
       - name: Checkout source code
@@ -26,3 +26,6 @@ jobs:
       - name: Push Docker image
         run: |
           docker push hithashreekv9/api-server:${{ github.sha }}
+
+      - name: Deploy to Kubernetes
+        run: helm upgrade api-server ./api-server-chart --set image.tag=${{ github.sha }}
